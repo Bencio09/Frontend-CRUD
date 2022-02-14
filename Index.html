@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Dipendenti</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.css" type="text/css">
+    <script src="./JS/bootstrap.js"></script>
+</head>
+
+<body>
+    <center>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Dipendenti</h1>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modelAdd">Aggiungi</button>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <div class="modal fade" id="modelAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Aggiungi Dipendente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Annulla"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="dipendenteNome">Nome</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Name" id="dipendenteNome">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="dipendenteCognome">Cognome</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="Surname" id="dipendenteCognome">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-primary">Aggiungi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
