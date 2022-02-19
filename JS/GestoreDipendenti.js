@@ -50,7 +50,7 @@ function listaImpiegati() {
         rows += "<td>" + value.lastName + "</td>";
         rows += "<td>" + value.birthDate + "</td>";
         rows += "<td>" + value.hireDate + "</td>";
-        rows += "<td>" + "no" + "</td>";
+        rows += "<td>" + "<img src='./Images/matita.png' alt='Modifica' width='28.125px' height='56.25px'>" + "<img src='./Images/cestino.png' alt='Modifica' width='28.125px' height='56.25px'>" + "</td>";
         rows += "</tr>";
     });
     $("tbody").append(rows);
