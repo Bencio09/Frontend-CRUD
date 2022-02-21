@@ -13,10 +13,6 @@ body {
     padding: 0;
 }
 
-.container {
-    margin-left: calc(50% - 30rem);
-}
-
 .table * {
     border: 1px solid dimgrey;
     padding: 5px;

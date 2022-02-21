@@ -41,24 +41,85 @@ var data = [{
 ];
 
 
+$(document).ready(function() {
+
+
+    $("#add-button").on("click", function(event) {
+        console.log("ciao");
+
+        saveModalInputs();
+
+        $('#modelAdd').modal('hide');
+    });
+
+});
+
+
 function listaImpiegati() {
     var rows = "";
+    var css_class = "dim-background";
+    var cls = "";
+    var counter = 0;
+
     $.each(data, function(key, value) {
-        rows += "<tr>";
+        if (counter % 2 == 0) {
+            cls = css_class;
+        }
+        counter++;
+        rows += "<tr class='" + cls + "'>";
         rows += "<td>" + value.id + "</td>";
         rows += "<td>" + value.firstName + "</td>";
         rows += "<td>" + value.lastName + "</td>";
         rows += "<td>" + value.birthDate + "</td>";
         rows += "<td>" + value.hireDate + "</td>";
-        rows += "<td>" + "<img src='./Images/matita.png' alt='Modifica' width='28.125px' height='56.25px'>" + "<img src='./Images/cestino.png' alt='Modifica' width='28.125px' height='56.25px'>" + "</td>";
+        rows += "<td>" + value.gender + "</td>";
+        rows += "<td>" + "<button class='btn btn-danger' onclick='rimuovImpiegato(" + value.id + "); listaImpiegati();'>Cancella</button>" + "</td>";
         rows += "</tr>";
+        cls = "";
     });
-    $("tbody").append(rows);
+    $("#to-fill").html(rows);
 }
 
-$(window).ready(function() {
+function rimuovImpiegato(id) {
+    let i = 0;
+    $.each(data, function(key, value) {
+        if (value.id = id) {
+            data.splice(i, 1);
+        }
+        i++
+    })
+}
 
+function aggiungImpiegato(firstName, lastName, birthDate, hireDate, gender) {
+    data.push({
+        "id": nextId,
+        "birthDate": birthDate,
+        "firstName": firstName,
+        "lastName": lastName,
+        "gender": gender,
+        "hireDate": hireDate,
+    })
+    nextId++;
+}
+
+$(window).on("load", function() {
     listaImpiegati();
-    $("tbody").append("<tr><td></td></tr>");
-    console.log("pronto");
 });
+
+function saveModalInputs() {
+    aggiungImpiegato(
+        $("#name").val().trim(),
+        $("#lastname").val().trim(),
+        $("#birthday").val(),
+        $("#hiring-date").val(),
+        $("#sex").val()
+    );
+    listaImpiegati();
+}
+
+function emptyModalInputs() {
+    $("#name").val("");
+    $("#lastname").val("");
+    $("#birthday").val("");
+    $("#hiring-date").val("");
+}

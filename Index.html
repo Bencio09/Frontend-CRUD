@@ -10,69 +10,100 @@
 </head>
 
 <body>
-    <center>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1>Dipendenti</h1>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modelAdd">Aggiungi</button>
-                </div>
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Dipendenti</h1>
             </div>
-            <table class="table">
-                <thead>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Data Nascita</th>
-                    <th>Data Assunzione</th>
-                    <th>Azioni</th>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="col">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modelAdd">Aggiungi</button>
+            </div>
         </div>
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Data Nascita</th>
+                <th>Data Assunzione</th>
+                <th>Azioni</th>
+            </thead>
+            <tbody id="to-fill">
+
+            </tbody>
+        </table>
+    </div>
 
 
-        <div class="modal fade" id="modelAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Aggiungi Dipendente</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Annulla"></button>
-                    </div>
-                    <div class="modal-body">
+    <div class="modal fade" id="modelAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Aggiungi Dipendente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Annulla"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
                         <form>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="dipendenteNome" class="form-label">Nome</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" name="Name" id="dipendenteNome">
-                                    </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="firstName" class="form-label">Nome</label>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="dipendenteCognome" class="form-label">Cognome</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" name="Surname" id="dipendenteCognome">
-                                    </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="firstName" id="firstName">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="lastName" class="form-label">Cognome</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="lastName" id="lastName">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="birthDate" class="form-label">Data di Nascita</label>
+                                </div>
+                                <div class="col">
+                                    <input type="date" class="form-control" name="birthDate" id="birthDate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="hireDate" class="form-label">Data di Assunzione</label>
+                                </div>
+                                <div class="col">
+                                    <input type="date" class="form-control" name="hireDate" id="hireDate">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="gender" class="form-label">Genere</label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="M" aria-label="Maschio">
+                                    <label class="form-check-label" for="male">2</label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="F" aria-label="Femmina">
+                                    <label class="form-check-label" for="female">2</label>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary">Aggiungi</button>
-                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-primary" id="add-button">Aggiungi</button>
                 </div>
             </div>
         </div>
-    </center>
+    </div>
 </body>
 
 </html>
