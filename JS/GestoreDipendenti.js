@@ -1,48 +1,21 @@
-var data = [{
-    "id": 10001,
-    "birthDate": "1953-09-01",
-    "firstName": "Georgi",
-    "lastName": "Facello",
-    "gender": "M",
-    "hireDate": "1986-06-25",
-},
-{
-    "id": 10002,
-    "birthDate": "1964-06-01",
-    "firstName": "Bezalel",
-    "lastName": "Simmel",
-    "gender": "F",
-    "hireDate": "1985-11-20",
-},
-{
-    "id": 10003,
-    "birthDate": "1959-12-02",
-    "firstName": "Parto",
-    "lastName": "Bamford",
-    "gender": "M",
-    "hireDate": "1986-08-27",
-},
-{
-    "id": 10004,
-    "birthDate": "1954-04-30",
-    "firstName": "Chirstian",
-    "lastName": "Koblick",
-    "gender": "M",
-    "hireDate": "1986-11-30",
-},
-{
-    "id": 10005,
-    "birthDate": "1955-01-20",
-    "firstName": "Kyoichi",
-    "lastName": "Maliniak",
-    "gender": "M",
-    "hireDate": "1989-09-11",
-}
-];
 
 var nextId = 10006;
 
+var data;
+var firstPage = "http://localhost:8080/employees";
+
+function leggiDalServer(urlServer) {
+    $.ajax({
+        url: urlServer,
+      }).done(function(riospostaServer) {
+        data = riospostaServer;
+        listaImpiegati();
+      });
+}
+
 $(document).ready(function () {
+
+    leggiDalServer(firstPage);
 
 
     $("#add-button").on("click", function (event) {
@@ -61,8 +34,8 @@ function listaImpiegati() {
     var css_class = "dim-background";
     var cls = "";
     var counter = 0;
-
-    $.each(data, function (key, value) {
+    console.log(data);
+    $.each(data['_embedded']['employees'], function (key, value) {
         if (counter % 2 == 0) {
             cls = css_class;
         }
@@ -147,3 +120,35 @@ function modificaImpiegati() {
         }
     }
 }
+
+function callFirstPage(){
+    $.get(firstPage, function(values,status){
+        lastPage = values._links.last.href;
+        nextPage = values._links.next.href;
+        selfPage = firstPage;
+        previousPage = selfPage;
+    
+        data = values._embedded.employees;
+        updatePageNumber(values.page.number);
+        updateEmployees();
+    
+        updateNextId();
+        totPages = values.page.totalPages;
+        checkPageButtons(values.page.number);
+    });
+}
+
+function loadLastPage(){
+    $.get(lastPage, function(values,status){
+  
+      nextPage = "";
+      previousPage = values._links.prev.href;
+      selfPage = lastPage;
+  
+      data = values._embedded.employees;
+      updatePageNumber(values.page.number);
+      updateEmployees();
+      totPages = values.page.totalPages;
+      checkPageButtons(values.page.number);
+    });
+  }
